@@ -41,6 +41,12 @@ app.post("/crear", async (req, res)=>{
         res.status(404).json({"mensaje":"Se presentó un error"})
 })
 
-
-
+const emailService = require('./backend/utils/email.service')
+app.get('/enviarcorreo',async (req, res)=>{
+    await emailService.sendEmail(
+        "juanpmontoya664@gmail.com",
+        "Confirmación de Registro",
+        "Bienvenido a la tienda en línea más top de todo el mundo",
+    );
+})
 app.listen(process.env.PORT)
